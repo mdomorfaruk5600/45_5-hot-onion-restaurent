@@ -1,0 +1,118 @@
+.shipment{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: start;
+    margin-top: 2rem;
+}
+
+.shipment .shipment-left .shipment-form form input {
+    display: block;
+    margin-bottom: 3px;
+    margin-top: 1rem;
+    padding: 10px 22px;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    background: #0000000d;
+    width: 100%;
+}
+
+.shipment .shipment-left .shipment-form form input::placeholder{
+    color: #181a198c;
+}
+
+textarea{
+    border: none;
+    outline: none;
+    margin-bottom: 3px;
+    margin-top: 1rem;
+    border-radius: 4px;
+    padding: 10px 22px;
+    background: #0000000d;
+    resize: none;
+}
+
+textarea::placeholder{
+    color: #181a198c;
+}
+
+.shipment-header h2{
+    font-weight: 400;
+}
+
+.shipment-header hr{
+    color: black;
+  height: 2px;
+  background: black;
+  margin-bottom: 40px;
+}
+
+.shipment .shipment-left .shipment-form form input[type='submit']{
+    width: 100%;
+    background-color: var(--success-color);
+    color: #fff;
+    margin-bottom: .8rem;
+}
+
+.shipment-right{
+    width: 350px;
+}
+
+.shipment-right .shipment-top .food-store{
+    margin-bottom: 8px;
+}
+
+.shipment-right .shipment-top .delivery-time{
+    margin-bottom: 8px;
+}
+
+.shipment-right .shipment-top .delivery-address{
+    margin-bottom: 8px;
+}
+
+.shipment-right .shipment-top .food-store span, .shipment-right .shipment-top .food-store span, h3{
+    display: inline-block;
+}
+
+.shipment-right .shipment-top .food-store span h3{
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 0px !important;
+}
+
+.shipment-bottom .cart {
+    margin-top: 1rem;
+}
+
+.shipment-bottom .cart div{
+    display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.total .title{
+    font-size: 17px;
+  font-weight: 600;
+}
+
+.total .price{
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.shipment-bottom .cart button{
+    width: 100%;
+  border: none;
+  outline: none;
+  background-color: var(--success-color);
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.disabled{
+    background-color: grey !important;
+}

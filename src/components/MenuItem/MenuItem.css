@@ -1,0 +1,44 @@
+.menu-item{
+    width: 300px;
+    padding: 28px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    margin: 0 26px;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+}
+.menu-item:hover{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.menu-image{
+    height: 190px;
+    width: 190px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: auto;
+    margin-bottom: 28px;
+}
+
+.menu-image img{
+    height: 100%;
+}
+
+.menu-info{
+    text-align: center;
+}
+
+.menu-info h3{
+    font-size: 1.1rem;
+    font-weight: 400;
+    text-align: center;
+}
+
+.menu-info p{
+    font-size: .8rem;
+    color: #000000b5;
+    font-weight: 400;
+}
+
+.menu-info h2{
+    font-size: 1.7rem;
+}

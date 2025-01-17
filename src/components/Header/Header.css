@@ -1,0 +1,60 @@
+.header{
+    background-color: #fff;
+    padding: 22px 0;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+}
+
+.header-right{
+    margin-left: auto;
+}
+
+.header-right ul{
+    list-style: none;
+    display: flex;
+    margin-bottom: 0px;
+    align-items: center;
+}
+
+.header-right ul li{
+    margin-left: 2rem;
+    cursor: pointer;
+}
+
+.header-right ul li button{
+    font-size: .9rem;
+    font-weight: 500;
+}
+
+.header-right ul li .login{
+    background:none;
+    border: none;
+    outline: none;
+}
+.header-right ul li .signup{
+    border: none;
+    outline: none;
+    padding: 7px 22px;
+    border-radius: 50px;
+    background-color: var(--success-color);
+    color: #fff;
+}
+
+.cart-badge{
+    position: absolute;
+    background-color: var(--success-color);
+    padding: 0.1rem 0.25rem;
+    font-size: 10px;
+    border-radius: 50%;
+    color: #fff;
+    top: -7px;
+    left: 55%;
+    font-weight: 700;
+}
+
+.disabled{
+    background-color: grey;
+}

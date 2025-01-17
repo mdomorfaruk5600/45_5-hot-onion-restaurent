@@ -1,0 +1,51 @@
+.banner{
+    background-image: url(../../images/banner.png);
+    height: 470px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-size: calc(100% + 140px);
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner h1{
+    font-size: 2.8rem;
+    font-weight: 400;
+    margin-bottom: 26px;
+}
+
+.banner .input-group{
+    background: #fff;
+    border-radius: 100px;
+    overflow: hidden;
+}
+
+.banner input{
+    background: none;
+    border: none;
+    outline: none;
+    border-radius: 100px;
+    padding: 11px 21px;
+}
+
+.banner input:focus{
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background: none;
+}
+
+.banner .input-group-text{
+    background-color: var(--success-color);
+    border: none;
+    outline: none;
+    border-radius: 100px;
+    height: 100%;
+    width: 120px;
+    justify-content: center;
+    color: #fff;
+    cursor: pointer;
+}

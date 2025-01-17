@@ -1,0 +1,104 @@
+.menu-detail{
+    display: flex;
+    margin-top: 2rem;
+    align-items: center;
+}
+
+.menu-detail .menu-left{
+    width: 40%;
+}
+
+.menu-detail .menu-left h2{
+    font-size: 2.1rem;
+    font-weight: 600;
+    margin-bottom: 28px;
+}
+
+.menu-detail .menu-left p{
+    color: #575757cf;
+}
+
+.left-bottom {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.left-bottom .quantity-box{
+    border: 1px solid #00000038;
+  padding: 0px 5px;
+  border-radius: 50px;
+  font-size: 22px;
+  font-weight: 500;
+  overflow: hidden;
+}
+
+.left-bottom .quantity-box .count{
+    width: 36px;
+    display: inline-block;
+    text-align: center;
+}
+
+.left-bottom .increase, .left-bottom .decrease{
+    cursor: pointer;
+    padding: 5px 7px;
+    display: inline-block;
+}
+
+.left-bottom .increase svg{
+    color: var(--success-color);
+}
+
+.left-bottom h1{
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: -3px;
+    margin-bottom: 0px;
+}
+
+.cart-button button{
+    border: none;
+    outline: none;
+    background-color: var(--success-color);
+    color: #fff;
+    padding: 15px 26px;
+  border-radius: 50px;
+}
+
+.cart-button button svg{
+    margin-right: 6px;
+}
+.menu-images{
+    display: flex;
+    margin-top: 30px;
+}
+.menu-images .image{
+    height: 135px;
+    width: 135px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 8px;
+}
+
+.menu-images .image img{
+    width: 100%;
+}
+
+
+.menu-detail .menu-right{
+    width: 60%;
+    overflow: hidden;
+}
+
+.menu-detail .s-menu-image{
+    height: 510px;
+    width: 510px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-left: auto;
+}
+
+.menu-detail .s-menu-image img{
+    margin-left: auto;
+}

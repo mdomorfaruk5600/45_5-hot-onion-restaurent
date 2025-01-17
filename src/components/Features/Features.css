@@ -1,0 +1,44 @@
+.features-top h2{
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+.features-top p{
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.features-bottom{
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    margin-top: 1rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.features-item{
+    width: 360px;
+
+}
+
+.features-bottom .features-image{
+    background-color: gray;
+    width: 100%;
+    border-radius: 1.5rem;
+    overflow: hidden;
+}
+
+.left-image{
+    height: 320px;
+}
+
+.center-image{
+    height: 380px;
+}
+
+.right-image{
+    height: 320px;
+}
+

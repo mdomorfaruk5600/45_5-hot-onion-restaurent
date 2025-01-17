@@ -1,0 +1,152 @@
+.left-sidebar{
+    width: 60%;
+    height: 610px;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.left-sidebar img{
+    border-radius: 12px;
+    height: 100%;
+  margin-left: -260px;
+}
+
+.right-sidebar{
+    width: 40%;
+    padding-left: 50px;
+}
+
+.right-sidebar .right-content{
+    background-color: #E1E1E3;
+    border-radius: 12px;
+    padding: 32px 28px 28px;
+}
+
+.right-content img{
+    height: 5rem;
+    margin-left: 34px;
+}
+
+.right-content .location-box{
+    background-color: #ffffff;
+    border-radius: 12px;
+    margin-top: 8px;
+    padding: 16px 22px;
+    gap: 14px;
+}
+
+.right-content .location-box{
+    display: flex;
+}
+
+.right-content .location-box hr{
+    color: var(--success-color);
+    margin: 0;
+    height: 100%;
+    width: 2px;
+    background-color: var(--success-color);
+}
+
+.location-box .line{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.location-box .line .bottom , .location-box .line .top{
+    background-color: var(--success-color);
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+}
+
+.location-box .line .bottom{
+    bottom: 0;
+}
+
+.location-box .line .top{
+    top: 0;
+}
+
+.your-location{
+    margin-bottom: 12px;
+}
+
+.your-location span, .shop-location span{
+    display: block;
+}
+
+.location-box .title{
+    font-size: 17px;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.location-box .line{
+    margin-bottom: 30px;
+  margin-top: 5px;
+}
+
+.location-box .sub-title{
+    font-size: 15px;
+  color: #858888;
+}
+
+.time-line{
+    margin: 26px 0px;
+}
+
+.time-line h2{
+    font-size: 36px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.time-line span{
+    color: #00000081;
+    font-size: 15px;
+  font-weight: 400;
+}
+
+.user-card{
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+
+.user-card img{
+    margin-left: 0px;
+    height: 4rem;
+}
+
+.user-card h3{
+    display: block;
+    font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.user-card span{
+    font-size: 15px;
+    color: #858888;
+}
+
+.contact-btn{
+    width: 100%;
+    border: none;
+    outline: none;
+}
+
+.contact-btn{
+    background-color: var(--success-color);
+    border-radius: 8px;
+    color: #ffffff;
+    margin-top: 3rem;
+  padding: 14px;
+}

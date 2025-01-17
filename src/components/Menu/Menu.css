@@ -1,0 +1,46 @@
+.menu{
+    padding: 50px 0;
+    flex-direction: column;
+}
+
+.menu-categories {
+    margin: auto;
+    margin-bottom: 40px;
+}
+
+.menu-categories ul{
+    list-style: none;
+    display: flex;
+    margin-bottom: 0px;
+    gap: 36px;
+}
+
+.menu-categories button{
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.menu-categories button.active{
+    color: var(--success-color);
+    border-bottom: 3px solid var(--success-color);
+}
+
+.menu-items{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.checkout-button{
+    border: none;
+    outline: none;
+    background-color: var(--success-color);
+    color: #fff;
+    padding: 11px 40px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border-radius: 8px;
+}
