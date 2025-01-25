@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import './Auth.css';
 import logo from '../../images/logo.png';
 import { createNewUserWithEmailAndPassword, initializeFirebaseApp, signInUser } from '../../firebase/Auth';
@@ -17,6 +17,13 @@ const Auth = () => {
     const emailRef = useRef();
     const passwordRef = useRef();
     const confirmPasswordRef = useRef();
+    
+    useEffect(()=>{
+        if(user.isLoggedIn && location.state){
+            navigate(location.state?.state || '');
+        }
+    }, [user]);
+
     const handleSubmit = event => {
         const name = nameRef.current?.value;
         const email = emailRef.current.value;

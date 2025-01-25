@@ -1,25 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './Shipment.css';
-import { connect } from 'react-redux';
 import CartItem from '../CartItem/CartItem';
-import { decreaseCartItem, increaseCartItem } from './../../redux/actions/cartActions';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { submitForm } from '../../redux/actions/formAction';
+import { CartContext } from './../../Helper/CartProvider/CartProvider';
+import { ShipmentContext } from './../../Helper/ShipmentProvider/ShipmentProvider';
+import { placedOrder } from '../../ManageDB/ManageDB';
 
-const Shipment = (props) => {
-    console.log('rerender')
+const Shipment = () => {
+    const [carts, setCarts] = useContext(CartContext);
+    const [data, setData] = useContext(ShipmentContext);
     const {register, handleSubmit, watch, formState:{errors}} = useForm();
     const [isFilled, setIsFilled] = useState(false);
     const navigate = useNavigate();
-    const {carts, foods} = props;
-    const cartItems = carts.map(item => {
-        const food = foods.find(food => food.id === item.foodId);
-        food.amount = item.amount;
-        return food;
-    });
     
-    const price = cartItems.reduce((total, item) => total + (item.price * item.amount), 0);
+    const price = carts.reduce((total, item) => total + (item.price * item.amount), 0);
 
     const tax = price / 10;
     
@@ -31,17 +26,23 @@ const Shipment = (props) => {
     }
 
     const onSubmit = data => {
-        debugger;
         const {delivery_option, road_no, address, business_name, instructor} = data;
         let isFilled = false;
         if(delivery_option === "" || road_no === "" || address === "" || business_name === "" || instructor === ""){
             isFilled = false;
         }else{
-            props.submitForm(data);
             isFilled = true;
+            setData({...data, road:road_no});
         }
         setIsFilled(isFilled);
     }
+
+    const handleOrderPlaced = () => {
+        setCarts([]);
+        placedOrder();
+        navigate('/order-placed');
+    }
+
     return (
         <div className='container'>
             <div className='shipment'>
@@ -75,13 +76,13 @@ const Shipment = (props) => {
                     </div>
                     <div className='shipment-middle'>
                         {
-                            cartItems.map(item => <CartItem increaseCartItem={props.increaseCartItem} decreaseCartItem={props.decreaseCartItem} key={item.id} item={item} />)
+                            carts.map(item => <CartItem key={item.id} item={item} />)
                         }
                     </div>
                     <div className='shipment-bottom'>
                         <div className='cart'>
                             <div>
-                                <span>Subtotal . {cartItems.length} item</span>
+                                <span>Subtotal . {carts.length} item</span>
                                 <span>${price.toFixed(2)}</span>
                             </div>
                             <div>
@@ -97,7 +98,7 @@ const Shipment = (props) => {
                                 <span>${(price + tax + deliveryFee).toFixed(2)}</span>
                             </div>
                             <div>
-                                <button className={!isFilled ? 'disabled':''} disabled={!isFilled ? 'disabled':''} onClick={() => navigate('/order-placed')}>Place Order</button>
+                                <button className={!isFilled ? 'disabled':''} disabled={!isFilled ? 'disabled':''} onClick={handleOrderPlaced}>Place Order</button>
                             </div>
                         </div>
                     </div>
@@ -107,17 +108,5 @@ const Shipment = (props) => {
     );
 };
 
-const mapStateToProps = state => {
-    return {
-        carts: state.cartReducer.carts,
-        foods:state.foodReducer.foods,
-    }
-}
 
-const mapDispatchToProps = {
-    increaseCartItem:increaseCartItem,
-    decreaseCartItem:decreaseCartItem,
-    submitForm:submitForm,
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Shipment);
+export default Shipment;

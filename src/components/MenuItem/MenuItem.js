@@ -3,7 +3,8 @@ import './MenuItem.css';
 import { Link } from 'react-router-dom';
 
 const MenuItem = (props) => {
-    const {id, name, image, description, price} = props.food;
+    const { food} = props;
+    const {id, name, image, description, price} = food;
     return (
         <Link to={`/menu/${id}`} style={{textDecoration:'none', color:'black'}}>
             <div className='menu-item'>

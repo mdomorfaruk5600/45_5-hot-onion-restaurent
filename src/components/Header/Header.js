@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '../../images/logo.png';
 import './Header.css';
 import { ShoppingCartOutlined } from '@mui/icons-material';
-import { connect } from 'react-redux';
+import { CartContext } from '../../Helper/CartProvider/CartProvider';
 
-const Header = (props) => {
+const Header = () => {
+    const [carts] = useContext(CartContext);
     return (
         <div className='header'>
             <div className='container'>
@@ -15,7 +16,7 @@ const Header = (props) => {
                     <ul>
                         <li style={{position:'relative'}}>
                             <ShoppingCartOutlined />
-                            <div className='cart-badge'>{props.carts.length}</div>
+                            <div className='cart-badge'>{carts.length}</div>
                         </li>
                         <li>
                             <button className='login'>Login</button>
@@ -30,10 +31,6 @@ const Header = (props) => {
     );
 };
 
-const mapStateToProps = state => {
-    return {
-        carts:state.cartReducer.carts,
-    }
-}
 
-export default connect(mapStateToProps,null)(Header);
+
+export default Header;

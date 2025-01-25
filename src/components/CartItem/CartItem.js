@@ -4,13 +4,6 @@ import { Add, Remove } from '@mui/icons-material';
 
 const CartItem = props => {
     const {id,image, name, amount} = props.item;
-
-    const handleDecrease = () => {
-        props.decreaseCartItem(id);
-    }
-    const handleIncrease = () => {
-        props.increaseCartItem(id);
-    }
     
     return (
         <div className='cart-item'>
@@ -22,11 +15,11 @@ const CartItem = props => {
                 <span style={{fontSize:'14px', color:'#8c8c8c'}}>Delivery Free</span>
             </div>
             <div className='item-modify'>
-                <span onClick={handleDecrease}>
+                <span >
                     <Remove />
                 </span>
-                <span className='amount-modify'>{amount.toString().padStart(2, '0')}</span>
-                <span onClick={handleIncrease}>
+                <span className='amount-modify'>{amount}</span>
+                <span >
                     <Add />
                 </span>
             </div>

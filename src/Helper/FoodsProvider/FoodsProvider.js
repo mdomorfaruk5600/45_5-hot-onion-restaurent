@@ -1,7 +1,10 @@
-import { FILTER_CATEGORY_FOOD, GET_FOOD } from "../actions/foodActions";
+import React from 'react';
+import { createContext } from 'react';
 
-const initialFoodState = {
-    foods:[
+export const foodsContext = createContext();
+
+const FoodsProvider = (props) => {
+    const foods = [
         {
             id: 1,
             name: "Classic Margherita Pizza",
@@ -146,26 +149,12 @@ const initialFoodState = {
             description:"The term bibim means mixing and bap is cooked rice. It is served as a bowl of warm white rice topped with namul (sautéed or blanched seasoned vegetables) and gochujang (chili pepper paste).",
             image: "https://cdn.dummyjson.com/recipe-images/18.webp"
           },
-    ],
-    categoriesFood:[],
-    selectedCategory:"lunch",
-    food:{},
+    ];
+    return (
+        <foodsContext.Provider value={foods}>
+           { props.children }
+        </foodsContext.Provider>
+    );
 };
 
-const foodReducer = (state=initialFoodState, action) => {
-  switch(action.type){
-    case GET_FOOD:
-        const food = state.foods.find(item => item.id === Number(action.payLoad));
-        return {...state, food:food};
-    case FILTER_CATEGORY_FOOD:
-        const category = action.payLoad.toLowerCase();
-        return {
-          ...state,
-          selectedCategory: category,
-        };
-    default:
-        return state;
-  }
-}
-
-export default foodReducer;
+export default FoodsProvider;

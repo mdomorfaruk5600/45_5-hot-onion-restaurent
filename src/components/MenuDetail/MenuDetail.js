@@ -1,20 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getFood } from '../../redux/actions/foodActions';
-import { connect } from 'react-redux';
 import './MenuDetail.css';
 import { Add, Remove, ShoppingCartOutlined } from '@mui/icons-material';
-import { addToCart } from '../../redux/actions/cartActions';
+import { foodsContext } from './../../Helper/FoodsProvider/FoodsProvider';
+import { CartContext } from './../../Helper/CartProvider/CartProvider';
+import {addToDataBase} from '../../ManageDB/ManageDB';
 
-const MenuDetail = (props) => {
-    const {id,name, description, image, price} = props.food;
+const MenuDetail = () => {
+    const serverFoods = useContext(foodsContext);
+    const [carts, setCarts] = useContext(CartContext);
+    const [food, setFood] = useState({});
     const {foodId} = useParams();
     const [count, setCount] = useState(1);
-
-    useEffect(()=>{
-        props.getFood(foodId);
+    useEffect(() => {
+        const food = serverFoods.find(item => item.id === Number(foodId));
+        setFood(food);
     }, []);
-
 
     const handleIncreaseCount = () => {
         setCount(count + 1);
@@ -26,15 +27,33 @@ const MenuDetail = (props) => {
         }
     }
 
+    const handleAddToCart = food => {
+        const sameProdouct = carts.find(item => item.id === food.id);
+        let count = 1;
+        let newCarts;
+        if(sameProdouct){
+            count = sameProdouct.amount + 1;
+            sameProdouct.amount = count;
+            const otherProducts = carts.filter(item => item.id !== sameProdouct.id);
+            newCarts = [...otherProducts, sameProdouct];
+        }else{
+            food.amount = count;
+            newCarts = [...carts, food];
+        }
+        setCarts(newCarts);
+        addToDataBase(food.id, count);
+    }
+
+
     return (
         <>
             <div className='container'>
                 <div className='menu-detail'>
                 <div className='menu-left'>
-                    <h2>{name}</h2>
-                    <p>{description}</p>
+                    <h2>{food?.name}</h2>
+                    <p>{food?.description}</p>
                     <div className='left-bottom'>
-                        <h1 className='price'>${price}</h1>
+                        <h1 className='price'>${food?.price}</h1>
                         <div className='quantity-box'>
                             <span className='decrease' onClick={handleDecreaseCount}><Remove /></span>
                             <span className='count'>{count}</span>
@@ -42,23 +61,23 @@ const MenuDetail = (props) => {
                         </div>
                     </div>
                      <div className='cart-button'>
-                        <button onClick={()=>props.addToCart(id, count)}><ShoppingCartOutlined/>Add</button>
+                        <button onClick={()=>handleAddToCart(food)}><ShoppingCartOutlined/>Add</button>
                      </div>
                      <div className='menu-images'>
                         <div className='image'>
-                            <img src={image} alt="" />
+                            <img src={food?.image} alt="" />
                         </div>
                         <div className='image'>
-                            <img src={image} alt="" />
+                            <img src={food?.image} alt="" />
                         </div>
                         <div className='image'>
-                            <img src={image} alt="" />
+                            <img src={food?.image} alt="" />
                         </div>
                      </div>
                 </div>
                 <div className='menu-right'>
                     <div className='s-menu-image'>
-                        <img src={image} alt="" width='100%' />
+                        <img src={food?.image} alt="" width='100%' />
                     </div>
                 </div>
             </div>
@@ -67,16 +86,6 @@ const MenuDetail = (props) => {
     );
 };
 
-const mapStateToProps = state => {
-    return {
-        food:state.foodReducer.food,
-    }
-}
 
-const mapDispatchToProps = {
-    getFood:getFood,
-    addToCart:addToCart
-    
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(MenuDetail);
+export default MenuDetail;

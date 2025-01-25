@@ -4,11 +4,12 @@ import map from '../../images/map.webp';
 import deliveryImage from '../../images/Group 1151.png';
 import userImage from '../../images/Group 1152.png';
 import { UserContext } from './../../Helper/UserProvider/UserProvider';
-import { connect } from 'react-redux';
+import { ShipmentContext } from './../../Helper/ShipmentProvider/ShipmentProvider';
 
-const OrderPlaced = props => {
+
+const OrderPlaced = () => {
     const [user] = useContext(UserContext);
-    const {address} = props.address;
+    const [data] = useContext(ShipmentContext);
     return (
         <div className='container' style={{alignItems:'start', marginBottom:'5rem'}}>
             <div className='left-sidebar'>
@@ -26,7 +27,7 @@ const OrderPlaced = props => {
                         <div style={{marginLeft: '6px'}}> 
                            <div className='your-location'>
                                 <span className='title'>Your Location</span>
-                                <span className='sub-title'>{address} </span>
+                                <span className='sub-title'> {data.road} </span>
                             </div> 
                            <div className='shop-location'>
                                 <span className='title'>Shop Location</span>
@@ -54,10 +55,5 @@ const OrderPlaced = props => {
     );
 }
 
-const mapStateToProps = state => {
-    return {
-        address:state.formReducer.data,
-    }
-}
 
-export default connect(mapStateToProps, null)(OrderPlaced);
+export default OrderPlaced;

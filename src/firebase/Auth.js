@@ -3,7 +3,9 @@ import {createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, sig
 import config from './config.';
 
 export const initializeFirebaseApp = () => {
-    firebase.initializeApp(config);
+    if(firebase.getApps().length < 1){
+        firebase.initializeApp(config);
+    }
 }
 
 export const createNewUserWithEmailAndPassword = (name, email, password) => {
